@@ -1,0 +1,108 @@
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    ul {
+        list-style: none;
+    }
+    .variants {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        li {
+            background: #F9F9F9;
+            border-radius: 30px;
+            padding: 15px 30px;
+            color: #2C2C2C;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 22px;
+            letter-spacing: 0.015em;
+            text-transform: capitalize;
+            cursor: pointer;
+            &.active {
+                background: #282828;
+                color: #FFFFFF;
+            }
+            &:hover:not(.active) {
+                background: darken($color: #F9F9F9, $amount: 5);
+            }
+        }
+    }
+    .sort {
+        position: relative;
+        button {
+            border: none;
+            outline: none;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.015em;
+            color: #2C2C2C;
+            img {
+                transform: rotateX(180deg);
+                transition: transform .3s ease-in-out;
+            }
+            span {
+                color: #FE5F1E;
+                
+            }
+            &:hover {
+                span {
+                    text-decoration: underline;
+                }
+            }
+        }
+        .sorts {
+            position: absolute;
+            padding: 13px 0;
+            background: #FFFFFF;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+            border-radius: 10px;
+            right: 0;
+            top: 125%;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
+            li {
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 19px;
+                letter-spacing: 0.015em;
+                padding: 10px 12px;
+                cursor: pointer;
+                background: transparent;
+                transition: background .3s ease-in-out;
+                &:hover:not(.active) {
+                    background: rgba(254, 95, 30, 0.05);
+                }
+                &.active {
+                    background: rgba(254, 95, 30, 0.05);
+                    color: #FE5F1E;
+                }
+            }
+            
+        }
+        &.active {
+            button {
+                img {
+                    transform: rotateX(0deg);
+                }
+            }
+            .sorts {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+}

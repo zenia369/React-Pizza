@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import './Filter.scss';
 
 const Filter = (props) => {
     const [variants, setVariants] = useState([
@@ -33,22 +34,63 @@ const Filter = (props) => {
             active: false,
         },
     ]);
-    const [activeSort, setActiveSort] = useState('популярністю');
     const [sorts, setSorts] = useState([
         {
             text: 'популярністю',
-            data : 'popularity'
+            data : 'popularity',
+            active: true
         },
         {
             text: 'ціною',
-            data : 'price'
+            data : 'price',
+            active: false
         },
         {
             text: 'алфавітом',
-            data : 'alphabet'
+            data : 'alphabet',
+            active: false
         },
-    ])
+    ]);
+    const [active, setActive] = useState(false);
 
+    const changeActive = () => {
+        setActive(!active)
+    }
+    const changeSorts = (data) => {
+        setSorts((prev) => {
+            return prev.map(el => {
+                if(el.data === data) {
+                    return {
+                        ...el,
+                        active: true
+                    }
+                }
+                return {
+                    ...el,
+                    active: false
+                }
+            })
+        });
+        setActive(!active);
+    }
+    const changeVariants = (data) => {
+        setVariants((prev) => {
+            return prev.map(el => {
+                if(el.data === data) {
+                    return {
+                        ...el,
+                        active: true
+                    }
+                }
+
+                return {
+                    ...el,
+                    active: false
+                }
+            })
+        })
+    }
+    
     return (
         <div className="filter">
             <ul className="variants">
@@ -58,7 +100,7 @@ const Filter = (props) => {
                             <li 
                                 key={el.text}
                                 className={el.active ? 'active' : ''}
-                                data-variant={el.data}
+                                onClick={() => changeVariants(el.data)}
                             >
                                 {el.text}
                             </li>
@@ -66,9 +108,9 @@ const Filter = (props) => {
                     })
                 }
             </ul>
-            <div className="sort">
-                <button>
-                    Сортувати за: {activeSort}
+            <div className={active? 'sort active' : 'sort' }>
+                <button onClick={changeActive}>
+                    <img src="images/icons/filter-status.svg" alt="filter icon" /> Сортувати за: <span>{(sorts.find((el) => el.active)).text}</span>
                 </button>
                 <ul className="sorts">
                     {
@@ -76,7 +118,8 @@ const Filter = (props) => {
                             return (
                                 <li
                                     key={el.text}
-                                    data-sotr={el.data}
+                                    className={el.active? 'active' : ''}
+                                    onClick={() =>changeSorts(el.data)}
                                 >
                                     за {el.text}
                                 </li>
