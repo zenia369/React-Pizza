@@ -57,6 +57,7 @@ const Filter = (props) => {
         setActive(!active)
     }
     const changeSorts = (data) => {
+        setActive(false);
         setSorts((prev) => {
             return prev.map(el => {
                 if(el.data === data) {
@@ -71,7 +72,6 @@ const Filter = (props) => {
                 }
             })
         });
-        setActive(!active);
     }
     const changeVariants = (data) => {
         setVariants((prev) => {

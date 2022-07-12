@@ -1,0 +1,48 @@
+.button {
+    padding: 7px 10px;
+    background: #FFFFFF;
+    border: 1px solid #EB5A1E;
+    border-radius: 30px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color: #EB5A1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: color .4s ease-in-out, background .3s ease-in-out;
+    cursor: pointer;
+    .plus {
+        color: #EB5A1E;
+        font-size: 25px;
+        transition: color .4s ease-in-out;
+    }
+    .number {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 100%;
+        color: #FFFFFF;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #EB5A1E;
+        transition: color .4s ease-in-out, background .3s ease-in-out;
+    }
+    &:hover {
+        background: #EB5A1E;
+        color: #FFFFFF;
+        .plus {
+            color: #FFFFFF;
+        }
+        .number {
+            background: #FFFFFF;
+            color: #EB5A1E;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+.settings-item {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 5px;
+    & > li {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 19px;
+        text-align: center;
+        letter-spacing: 0.015em;
+        color: #2C2C2C;
+        text-align: center;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        cursor: pointer;
+        &:hover:not(.active):not(.disabled) {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            
+        }
+    }
+    .active {
+        background: #FFFFFF;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+        border-radius: 5px;
+    }
+    .disabled {
+        cursor: default;
+        opacity: .6;
+    }
+}
