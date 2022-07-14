@@ -1,3 +1,5 @@
+import { Routes, Route} from "react-router-dom";
+
 //hoc
 import Main from "./container/Main";
 
@@ -9,10 +11,16 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <Main>
-        <Filter/>
-        <List/>
-      </Main>
+      <Routes>
+        <Route path="/" element={
+              <Main>
+                <Filter/>
+                <List/>
+              </Main>
+        }/>
+        <Route path="/cart" element={<div>Cart</div>}/>
+      </Routes>
+
     </div>
   );
 }

@@ -72,6 +72,114 @@ const items = [
         price: 70,
         number: 1,
     }
+    ,
+    {
+        img: 'images/item-1.svg',
+        title: 'Сирна',
+        weight: [
+            {
+                size: 'тонке',
+                active: true
+            },
+            {
+                size: 'традиційне',
+                active: false
+            }
+        ],
+        radius: [
+            {
+                size: 26,
+                price: 100,
+                active: false,
+                disabled: true
+            },
+            {
+                size: 30,
+                price: 200,
+                active: true
+            },
+            {
+                size: 40,
+                price: 300,
+                active: false,
+                disabled: true
+            }
+        ],
+        price: 70,
+        number: 1,
+    }
+    ,
+    {
+        img: 'images/item-1.svg',
+        title: 'Сирна',
+        weight: [
+            {
+                size: 'тонке',
+                active: true
+            },
+            {
+                size: 'традиційне',
+                active: false
+            }
+        ],
+        radius: [
+            {
+                size: 26,
+                price: 100,
+                active: false,
+                disabled: true
+            },
+            {
+                size: 30,
+                price: 200,
+                active: true
+            },
+            {
+                size: 40,
+                price: 300,
+                active: false,
+                disabled: true
+            }
+        ],
+        price: 70,
+        number: 1,
+    }
+    ,
+    {
+        img: 'images/item-1.svg',
+        title: 'Сирна',
+        weight: [
+            {
+                size: 'тонке',
+                active: true
+            },
+            {
+                size: 'традиційне',
+                active: false
+            }
+        ],
+        radius: [
+            {
+                size: 26,
+                price: 100,
+                active: false,
+                disabled: true
+            },
+            {
+                size: 30,
+                price: 200,
+                active: true
+            },
+            {
+                size: 40,
+                price: 300,
+                active: false,
+                disabled: true
+            }
+        ],
+        price: 70,
+        number: 1,
+    }
 ]
 
 const List = () => {
@@ -81,9 +189,9 @@ const List = () => {
             <h2>Всі піцци</h2>
             <div className="wrapper">
                 {
-                    items.map(el => {
+                    items.map((el, i) => {
                         return <Item
-                            key={el.title}
+                            key={el.title+i}
                             {...el}
                         />
                     })
