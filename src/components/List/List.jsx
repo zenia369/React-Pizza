@@ -9,11 +9,83 @@ const items = [
         title: 'Чісбургер-піцца',
         weight: [
             {
-                size: 20,
+                size: 'тонке',
+                price: 30,
                 active: true
             },
             {
+                size: 'традиційне',
+                price: 50,
+                active: false
+            }
+        ],
+        radius: [
+            {
+                size: 26,
+                price: 100,
+                active: true
+            },
+            {
+                size: 30,
+                price: 200,
+                active: false
+            },
+            {
                 size: 40,
+                price: 300,
+                active: false
+            }
+        ],
+        price: 70,
+        number: 1,
+    },
+    {
+        img: 'images/item-1.svg',
+        title: 'Чісбургер-піцца',
+        weight: [
+            {
+                size: 'тонке',
+                price: 30,
+                active: true
+            },
+            {
+                size: 'традиційне',
+                price: 50,
+                active: false
+            }
+        ],
+        radius: [
+            {
+                size: 26,
+                price: 100,
+                active: true
+            },
+            {
+                size: 30,
+                price: 200,
+                active: false
+            },
+            {
+                size: 40,
+                price: 300,
+                active: false
+            }
+        ],
+        price: 70,
+        number: 2,
+    },
+    {
+        img: 'images/item-1.svg',
+        title: 'Чісбургер-піцца',
+        weight: [
+            {
+                size: 'тонке',
+                price: 30,
+                active: true
+            },
+            {
+                size: 'традиційне',
+                price: 50,
                 active: false
             }
         ],
@@ -39,14 +111,16 @@ const items = [
     },
     {
         img: 'images/item-1.svg',
-        title: 'Сирна',
+        title: 'Чісбургер-піцца',
         weight: [
             {
                 size: 'тонке',
+                price: 30,
                 active: true
             },
             {
                 size: 'традиційне',
+                price: 50,
                 active: false
             }
         ],
@@ -54,35 +128,34 @@ const items = [
             {
                 size: 26,
                 price: 100,
-                active: false,
-                disabled: true
+                active: true
             },
             {
                 size: 30,
                 price: 200,
-                active: true
+                active: false
             },
             {
                 size: 40,
                 price: 300,
-                active: false,
-                disabled: true
+                active: false
             }
         ],
         price: 70,
-        number: 1,
-    }
-    ,
+        number: 0,
+    },
     {
         img: 'images/item-1.svg',
-        title: 'Сирна',
+        title: 'Чісбургер-піцца',
         weight: [
             {
                 size: 'тонке',
+                price: 30,
                 active: true
             },
             {
                 size: 'традиційне',
+                price: 50,
                 active: false
             }
         ],
@@ -90,35 +163,34 @@ const items = [
             {
                 size: 26,
                 price: 100,
-                active: false,
-                disabled: true
+                active: true
             },
             {
                 size: 30,
                 price: 200,
-                active: true
+                active: false
             },
             {
                 size: 40,
                 price: 300,
-                active: false,
-                disabled: true
+                active: false
             }
         ],
         price: 70,
-        number: 1,
-    }
-    ,
+        number: 0,
+    },
     {
         img: 'images/item-1.svg',
-        title: 'Сирна',
+        title: 'Чісбургер-піцца',
         weight: [
             {
                 size: 'тонке',
+                price: 30,
                 active: true
             },
             {
                 size: 'традиційне',
+                price: 50,
                 active: false
             }
         ],
@@ -126,60 +198,22 @@ const items = [
             {
                 size: 26,
                 price: 100,
-                active: false,
-                disabled: true
+                active: true
             },
             {
                 size: 30,
                 price: 200,
-                active: true
+                active: false
             },
             {
                 size: 40,
                 price: 300,
-                active: false,
-                disabled: true
-            }
-        ],
-        price: 70,
-        number: 1,
-    }
-    ,
-    {
-        img: 'images/item-1.svg',
-        title: 'Сирна',
-        weight: [
-            {
-                size: 'тонке',
-                active: true
-            },
-            {
-                size: 'традиційне',
                 active: false
             }
         ],
-        radius: [
-            {
-                size: 26,
-                price: 100,
-                active: false,
-                disabled: true
-            },
-            {
-                size: 30,
-                price: 200,
-                active: true
-            },
-            {
-                size: 40,
-                price: 300,
-                active: false,
-                disabled: true
-            }
-        ],
         price: 70,
-        number: 1,
-    }
+        number: 0,
+    },
 ]
 
 const List = () => {

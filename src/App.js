@@ -6,21 +6,23 @@ import Main from "./container/Main";
 import Filter from "./components/Filter/Filter";
 import Header from "./components/Header/Header";
 import List from "./components/List/List";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Routes>
-        <Route path="/" element={
-              <Main>
+      <Main>
+        <Routes>
+          <Route path="/" element={
+              <>
                 <Filter/>
                 <List/>
-              </Main>
-        }/>
-        <Route path="/cart" element={<div>Cart</div>}/>
-      </Routes>
-
+              </>
+          }/>
+          <Route path="/cart" element={<Cart/>}/>
+        </Routes>
+      </Main>
     </div>
   );
 }
