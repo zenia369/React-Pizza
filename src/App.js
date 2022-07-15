@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route} from "react-router-dom";
 
 //hoc
@@ -20,7 +21,9 @@ function App() {
                 <List/>
               </>
           }/>
-          <Route path="/cart" element={<Cart/>}/>
+          <Route path="/cart" element={
+              <Cart/>
+            }/>
         </Routes>
       </Main>
     </div>
