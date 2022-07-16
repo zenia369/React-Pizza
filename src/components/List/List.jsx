@@ -8,11 +8,18 @@ import { settingsChange } from "../../redux/slices/pizzas";
 import Item from "../Item/Item";
 import Loader from '../UI/Loader/Loader';
 
+import sortList from "../../helpers/sortList";
+
 
 const List = () => {
     const dispatch = useDispatch();
 
-    const {items, loading} = useSelector(state => state.pizzas);
+    let {items, loading} = useSelector(state => state.pizzas);
+    const filterActive = useSelector(state => state.filter.active);
+    const sortActive = useSelector(state => state.sort.active);
+    
+    items = sortList(items, filterActive);
+    items = sortList(items, sortActive);
 
     const HandleSettingsChange = (settingName, size, id) => {
         dispatch(settingsChange({settingName, size, id}))

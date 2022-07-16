@@ -4,7 +4,7 @@ import axios from 'axios';
 const initialState = {
     items: [],
     loading: true,
-    active: 'all',
+    active: 'popularity',
     activeShow: false,
 }
 
