@@ -1,91 +1,32 @@
 import React from "react";
 import './Cart.scss';
 
-import getPrice from "../../helpers/getPrice";
-
 import ItemCart from "./ItemCart/ItemCart";
-import { Link } from "react-router-dom";
 import EmptyCart from "./EmptyCart/EmptyCart";
 
-const items = [
-    {
-        img: 'images/item-1.svg',
-        title: 'Чісбургер-піцца',
-        weight: [
-            {
-                size: 'тонке',
-                price: 30,
-                active: true
-            },
-            {
-                size: 'традиційне',
-                price: 50,
-                active: false
-            }
-        ],
-        radius: [
-            {
-                size: 26,
-                price: 100,
-                active: true
-            },
-            {
-                size: 30,
-                price: 200,
-                active: false
-            },
-            {
-                size: 40,
-                price: 300,
-                active: false
-            }
-        ],
-        price: 70,
-        number: 1,
-    },
-    {
-        img: 'images/item-1.svg',
-        title: 'Чісбургер-піцца',
-        weight: [
-            {
-                size: 'тонке',
-                price: 30,
-                active: true
-            },
-            {
-                size: 'традиційне',
-                price: 50,
-                active: false
-            }
-        ],
-        radius: [
-            {
-                size: 26,
-                price: 100,
-                active: true
-            },
-            {
-                size: 30,
-                price: 200,
-                active: false
-            },
-            {
-                size: 40,
-                price: 300,
-                active: false
-            }
-        ],
-        price: 70,
-        number: 3,
-    },
-]
+import getTotalOrderCounts from "../../helpers/getTotalOrderCounts";
+import getTotalPrice from "../../helpers/getTotalPrice";
+
+import { Link } from "react-router-dom";
+
+import {useDispatch, useSelector} from 'react-redux';
+import { deleteAllCartItmes } from "../../redux/slices/pizzas";
+
 
 const Cart = () => {
-    const totalPrice = items.reduce((acc, el) => {
-        const price = getPrice(el.price, el.number, el.weight, el.radius);
-        acc += price;
-        return acc
-    }, 0);
+    const dispatch = useDispatch();
+
+
+    const {items:pizzas, cartIdPizzas} = useSelector(state => state.pizzas);
+
+    const items = pizzas.filter(el => cartIdPizzas.includes(el.id));
+    
+    const totalPrice = getTotalPrice(items);
+    const totalLength = getTotalOrderCounts(items);
+
+    const deleteAllCartHandle = () => {
+        dispatch(deleteAllCartItmes())
+    }
 
     return (
         <section className="cart">
@@ -98,7 +39,7 @@ const Cart = () => {
                                 <img src="images/icons/big-cart.svg" alt="big cart" />
                                 <h2>Корзина</h2>
                             </div>
-                            <button>
+                            <button onClick={deleteAllCartHandle}>
                                 <img src="images/icons/trash.svg" alt="trash icon" />
                                 <p>Очисити<br/>корзину</p>
                             </button>
@@ -110,7 +51,7 @@ const Cart = () => {
                         </div>
                         <div className="cart_footer">
                             <div className="cart_footer_info">
-                                <p className="number">Всього піцц: <span>{items.length}  шт</span></p>
+                                <p className="number">Всього піцц: <span>{totalLength}  шт</span></p>
                                 <p className="totalPrice">Вартість замовлення: <span>{totalPrice} грн</span></p>
                             </div>
                             <div className="cart_footer_btns">

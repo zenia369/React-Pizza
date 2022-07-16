@@ -5,7 +5,7 @@ import axios from 'axios';
 const initialState = {
     items: [],
     loading: true,
-    actions: 'all'
+    active: 'all'
 };
 
 export const fetchFilter = createAsyncThunk('pizza/fetchFilter', () => {
@@ -17,8 +17,21 @@ const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
-        getFilter(state) {
-            return state
+        changeVariants(state, actions) {
+            state.items = state.items.map(el => {
+                if(el.data === actions.payload) {
+                    state.active = el.data;
+                    
+                    return {
+                        ...el,
+                        active: true
+                    }
+                }
+                return {
+                    ...el, 
+                    active: false
+                }
+            })
         }
     },
     extraReducers: (build) => {
@@ -33,6 +46,6 @@ const filterSlice = createSlice({
     }
   })
   
-  export const { getFilter } = filterSlice.actions;
+  export const { changeVariants } = filterSlice.actions;
 
   export default filterSlice.reducer

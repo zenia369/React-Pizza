@@ -1,5 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Routes, Route} from "react-router-dom";
+
+import {useDispatch} from 'react-redux';
+import { fetchPizzas } from './redux/slices/pizzas';
+import { fetchFilter } from "./redux/slices/filter";
+import { fetchSort } from "./redux/slices/sort";
 
 //hoc
 import Main from "./container/Main";
@@ -10,6 +15,14 @@ import List from "./components/List/List";
 import Cart from "./components/Cart/Cart";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+      dispatch(fetchPizzas());
+      dispatch(fetchFilter());
+      dispatch(fetchSort());
+  }, []);
+
   return (
     <div className="App">
       <Header/>

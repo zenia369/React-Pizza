@@ -1,20 +1,17 @@
-import React, {useEffect} from "react";
+import React from "react";
 import './Filter.scss';
 
-import {useDispatch, useSelector} from 'react-redux';
-import { fetchFilter } from "../../redux/slices/filter";
-import { fetchSort, setActiveShow } from "../../redux/slices/sort";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-import Loader from "../UI/Loader/Loader";
+import {useDispatch, useSelector} from 'react-redux';
+import { changeSort, setActiveShow } from "../../redux/slices/sort";
+import { changeVariants } from "../../redux/slices/filter";
+
 
 const Filter = (props) => {
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchFilter());
-        dispatch(fetchSort());
-    }, [])
 
     const {items:variants, loading:loadingVariants} = useSelector(state => state.filter);
     const {items:sorts, loading:loadingSorts, activeShow:active} = useSelector(state => state.sort);
@@ -23,40 +20,11 @@ const Filter = (props) => {
     const changeActive = () => {
         dispatch(setActiveShow(!active));
     }
-    const changeSorts = (data) => {
-        dispatch(setActiveShow(!active));
-
-        // setSorts((prev) => {
-        //     return prev.map(el => {
-        //         if(el.data === data) {
-        //             return {
-        //                 ...el,
-        //                 active: true
-        //             }
-        //         }
-        //         return {
-        //             ...el,
-        //             active: false
-        //         }
-        //     })
-        // });
+    const clickChangeHendle = (data) => {
+        dispatch(changeSort(data))
     }
-    const changeVariants = (data) => {
-        // setVariants((prev) => {
-        //     return prev.map(el => {
-        //         if(el.data === data) {
-        //             return {
-        //                 ...el,
-        //                 active: true
-        //             }
-        //         }
-
-        //         return {
-        //             ...el,
-        //             active: false
-        //         }
-        //     })
-        // })
+    const changeClickHandle = (data) => {
+        dispatch(changeVariants(data))
     }
     
     return (
@@ -64,14 +32,20 @@ const Filter = (props) => {
             <ul className="variants">
                 {
                     loadingVariants && variants.length === 0 
-                        ? <Loader/>
+                        ? (
+                            <SkeletonTheme baseColor="#FE5F1E" highlightColor="#f7cfbf">
+                                <div style={{width: 240, height: 40}}>
+                                    <Skeleton count={1}/>   
+                                </div>
+                            </SkeletonTheme>
+                        )
                         : (
                             variants.map(el => {
                                 return (
                                     <li 
                                         key={el.text}
                                         className={el.active ? 'active' : ''}
-                                        onClick={() => changeVariants(el.data)}
+                                        onClick={() => changeClickHandle(el.data)}
                                     >
                                         {el.text}
                                     </li>
@@ -83,7 +57,13 @@ const Filter = (props) => {
             <div className={active? 'sort active' : 'sort' }>
                 {
                     loadingSorts && sorts.length === 0
-                        ? <Loader/>
+                        ? (
+                            <SkeletonTheme baseColor="#FE5F1E" highlightColor="#f7cfbf">
+                                <div style={{width: 240, height: 40}}>
+                                    <Skeleton count={1}/>   
+                                </div>
+                            </SkeletonTheme>
+                        )
                         : (
                             <>
                                 <button onClick={changeActive}>
@@ -96,7 +76,7 @@ const Filter = (props) => {
                                                 <li
                                                     key={el.text}
                                                     className={el.active? 'active' : ''}
-                                                    onClick={() =>changeSorts(el.data)}
+                                                    onClick={() => clickChangeHendle(el.data)}
                                                 >
                                                     за {el.text}
                                                 </li>

@@ -17,11 +17,25 @@ const sortSlice = createSlice({
     name: 'sort',
     initialState,
     reducers: {
-        getSort(state) {
-            return state
-        },
         setActiveShow(state, actions) {
             state.activeShow = actions.payload
+        },
+        changeSort(state, actions) {
+            state.items = state.items.map(el => {
+                if(el.data === actions.payload) {
+                    state.active = el.data;
+                    
+                    return {
+                        ...el,
+                        active: true
+                    }
+                }
+                return {
+                    ...el, 
+                    active: false
+                }
+            });
+            state.activeShow = false;
         }
     },
     extraReducers: (build) => {
@@ -36,6 +50,6 @@ const sortSlice = createSlice({
     }
   })
   
-  export const { getSort, setActiveShow } = sortSlice.actions;
+  export const { changeSort, setActiveShow } = sortSlice.actions;
 
   export default sortSlice.reducer
