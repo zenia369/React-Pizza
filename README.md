@@ -3,7 +3,7 @@ It is repo for react-pizza and you can see my progress in development this site.
 
 Here we are had link: <https://react-pizza-psi.vercel.app/>
 
-## Pizza texnology
+## Pizza technology
 In this project I`m use Mock API, RTK, axios.
 
 ### Api`s
