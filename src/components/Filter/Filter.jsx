@@ -1,8 +1,7 @@
 import React from "react";
 import './Filter.scss';
 
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import FilterLoader from "../UI/FilterLoader/FilterLoader";
 
 import {useDispatch, useSelector} from 'react-redux';
 import { changeSort, setActiveShow } from "../../redux/slices/sort";
@@ -33,11 +32,7 @@ const Filter = (props) => {
                 {
                     loadingVariants && variants.length === 0 
                         ? (
-                            <SkeletonTheme baseColor="#FE5F1E" highlightColor="#f7cfbf">
-                                <div style={{width: 240, height: 40}}>
-                                    <Skeleton count={1}/>   
-                                </div>
-                            </SkeletonTheme>
+                            <FilterLoader length={5}/>
                         )
                         : (
                             variants.map(el => {
@@ -58,11 +53,7 @@ const Filter = (props) => {
                 {
                     loadingSorts && sorts.length === 0
                         ? (
-                            <SkeletonTheme baseColor="#FE5F1E" highlightColor="#f7cfbf">
-                                <div style={{width: 240, height: 40}}>
-                                    <Skeleton count={1}/>   
-                                </div>
-                            </SkeletonTheme>
+                            <FilterLoader length={1} width={230} itemWidth={210} x={5}/>
                         )
                         : (
                             <>

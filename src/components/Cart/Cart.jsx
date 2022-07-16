@@ -41,7 +41,7 @@ const Cart = () => {
                             </div>
                             <button onClick={deleteAllCartHandle}>
                                 <img src="images/icons/trash.svg" alt="trash icon" />
-                                <p>Очисити<br/>корзину</p>
+                                <p>Очисити корзину</p>
                             </button>
                         </div>
                         <div className="cart_list">

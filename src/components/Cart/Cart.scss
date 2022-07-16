@@ -32,6 +32,9 @@ main .cart {
             line-height: 22px;
             color: #B6B6B6;
             cursor: pointer;
+            display: flex;
+            gap: 5px;
+            align-items: center;
             transition: color .3s ease;
             img {
                 width: 30px;

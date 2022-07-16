@@ -22,6 +22,7 @@
                 font-style: italic;
                 font-size: 24px;
                 font-weight: lighter;
+                color: black;
             }
             p {
                 font-style: normal;
@@ -30,6 +31,12 @@
                 line-height: 22px;
                 color: #7B7B7B;
             }
+        }
+        &:active {
+            h1 {
+                color: #FE5F1E !important;
+            }
+            
         }
     }
     .cart {
@@ -48,9 +55,12 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        transition: border .3s ease-in-out;
+        transition: border .3s ease-in-out, transform .2s ease;
         &:hover {
             border: 1px solid white;
+        }
+        &:active {
+            transform: translateY(1px);
         }
 
         span {

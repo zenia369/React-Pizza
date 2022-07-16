@@ -12,7 +12,8 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: color .4s ease-in-out, background .3s ease-in-out;
+    user-select: none;
+    transition: color .4s ease-in-out, background .3s ease-in-out, transform .3s ease-in-out;
     cursor: pointer;
     .plus {
         color: #EB5A1E;
@@ -32,7 +33,7 @@
         height: 22px;
         border-radius: 50%;
         background: #EB5A1E;
-        transition: color .4s ease-in-out, background .3s ease-in-out;
+        transition: color .4s ease-in-out, background .3s ease-in-out, transform .2s ease;
     }
     &:hover {
         background: #EB5A1E;
@@ -44,5 +45,8 @@
             background: #FFFFFF;
             color: #EB5A1E;
         }
+    }
+    &:active {
+        transform: translateY(2px);
     }
 }

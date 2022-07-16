@@ -6,9 +6,9 @@ import { settingsChange } from "../../redux/slices/pizzas";
 
 
 import Item from "../Item/Item";
-import Loader from '../UI/Loader/Loader';
 
 import sortList from "../../helpers/sortList";
+import CardLoader from "../UI/CardLoader/CardLoader";
 
 
 const List = () => {
@@ -30,7 +30,16 @@ const List = () => {
             <h2>Всі піцци</h2>
             {
                 (loading && items.length === 0)
-                    ? <Loader/>
+                    ? (
+                        <div className="wrapper">
+                            {
+                                [...Array(5)].map((el, i) => 
+                                    <div className="item" key={i+'listLoader'}>
+                                        <CardLoader/>
+                                    </div>)
+                            } 
+                        </div>
+                    )
                     : (
                         <div className="wrapper">
                             {

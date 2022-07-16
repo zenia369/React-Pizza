@@ -56,6 +56,10 @@
         font-size: 22px;
         line-height: 30px;
         letter-spacing: 0.01em;
+        transition: transform .2s ease;
+        &:active {
+            transform: translateY(1px);
+        }
     }
     &_numbers {
         flex:1;
@@ -66,11 +70,14 @@
             color: #FE5F1E;
             border-color: #FE5F1E;
             font-size: 25px;
-            transition: color .4s ease-in-out, background .4s ease-in-out;
+            transition: color .4s ease-in-out, background .4s ease-in-out, transform .2s ease;
             &:hover {
                 color: white;
                 background: #FE5F1E;
             } 
+            &:active {
+                transform: translateY(2px);
+            }
         }
         p {
             font-style: normal;
